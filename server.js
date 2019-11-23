@@ -12,7 +12,7 @@ var app      = Router()
 
 // Routes
 app.addRoute("/status", function (req, res, opts, cb) {
-  sendJson(req, res, "{status: 'ok'}")
+  sendJson(req, res, "{status: 'ok'}\n")
 })
 
 app.addRoute("/", function (req, res, opts, cb) {
@@ -25,10 +25,12 @@ app.addRoute("/", function (req, res, opts, cb) {
 })
 
 app.addRoute("/hostname", function (req, res, opts, cb) {
-  var data = "<p>Hostname: " + config.get('HOSTNAME') + "</p>";
+  var data = "<p>Hostname: " + config.get('HOSTNAME') + "</p>\n";
+  console.log("Got hostname");
   sendHtml(req, res, {
     body: data,
-    statusCode: 200
+    statusCode: 200,
+    headers: {}
   })
 })
 
